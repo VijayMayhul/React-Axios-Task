@@ -43,7 +43,7 @@ const SingleUserProfile = () => {
         <div className="row h-100 d-flex justify-content-center align-items-center">
           <div className="col-12 text-center">
             {loading ? (
-              <div className="py-5">Loading...</div>
+              <div className="py-5 text-light">Loading...</div>
             ) : (
               <div className="card h-100">
                 <div className="row mx-0">

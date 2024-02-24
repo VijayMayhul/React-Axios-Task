@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
@@ -13,13 +13,7 @@ const Navbar = () => {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <div className="container-fluid px-4 px-lg-5 py-1 justify-content-between">
           {/* through Link tab declaring where to navigate by click */}
-          <Link
-            to={"/"}
-            onClick={() => handleChange("/")}
-            className={`navbar-brand d-flex align-items-center ${
-              activeTab === "/" ? "active" : ""
-            }`}
-          >
+          <Link to={"/"} className="navbar-brand d-flex align-items-center">
             <img
               src="/Images/axios1.png"
               alt="axios_logo"
@@ -53,7 +47,9 @@ const Navbar = () => {
                   to="/users"
                   onClick={() => handleChange("/users")}
                   className={`nav-link ${
-                    activeTab === "/users" || activeTab === '/addUser' ? "active" : ""
+                    activeTab !== "/"
+                      ? "active"
+                      : ""
                   }`}
                 >
                   Modify Users
@@ -64,7 +60,7 @@ const Navbar = () => {
             <Link
               to={"/addUser"}
               onClick={() => handleChange("/addProduct")}
-              className='nav-link'
+              className="nav-link"
             >
               <button className="btn btn-success">Add User</button>
             </Link>

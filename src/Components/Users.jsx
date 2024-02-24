@@ -50,52 +50,61 @@ const Users = () => {
     <>
       <div className="container">
         <div className="table-responsive">
-          <table className="table table-hover text-center mt-4">
-            <thead>
-              <tr>
-                <th scope="col">S.No</th>
-                <th scope="col">User Name</th>
-                <th scope="col">Company Name</th>
-                <th scope="col"></th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              {userData.map((item, index) => {
-                return (
-                  <tr key={index}>
-                    <th scope="row">{item.id}</th>
-                    <td>{item.name}</td>
-                    <td>{item.companyName}</td>
-                    <td>
-                      <button
-                        className="btn btn-primary"
-                        onClick={() => navigate(`/editUser/${item.id}`)}
-                      >
-                        Update
-                      </button>
-                    </td>
-                    <td>
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => handleDelete(item.id)}
-                      >
-                        Delete
-                      </button>
-                    </td>
+          {userData.length === 0 ? (
+            <h3 className="text-white text-center my-5 ">
+              There is no user profiles.
+              <br /> Add new user to see profiles !
+            </h3>
+          ) : (
+            <>
+              <table className="table table-hover text-center mt-4">
+                <thead>
+                  <tr>
+                    <th scope="col">S.No</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
                   </tr>
-                );
-              })}
-            </tbody>
-          </table>
-          <div className="text-center my-4">
-            <button
-              className="btn btn-success"
-              onClick={() => navigate("/addUser")}
-            >
-              Add User
-            </button>
-          </div>
+                </thead>
+                <tbody>
+                  {userData.map((item, index) => {
+                    return (
+                      <tr key={index}>
+                        <th scope="row">{++index}</th>
+                        <td>{item.name}</td>
+                        <td>{item.companyName}</td>
+                        <td>
+                          <button
+                            className="btn btn-primary"
+                            onClick={() => navigate(`/editUser/${item.id}`)}
+                          >
+                            Update
+                          </button>
+                        </td>
+                        <td>
+                          <button
+                            className="btn btn-danger"
+                            onClick={() => handleDelete(item.id)}
+                          >
+                            Delete
+                          </button>
+                        </td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+              <div className="text-center my-4">
+                <button
+                  className="btn btn-success"
+                  onClick={() => navigate("/addUser")}
+                >
+                  Add User
+                </button>
+              </div>
+            </>
+          )}
         </div>
       </div>
     </>

@@ -41,8 +41,9 @@ const Home = () => {
           <span className="px-5 border border-white">User Profiles</span>
           
           </h1>
-
-        <div className="row d-flex justify-content-center h-100">
+        {
+          userData.length === 0 ? <h3 className="text-white text-center my-5 ">There is no user profiles.<br/> Add new user to see profiles !</h3> :
+          <div className="row d-flex justify-content-center h-100">
           {userData.map((item, index) => {
             return (
               <div
@@ -79,6 +80,8 @@ const Home = () => {
             );
           })}
         </div>
+        }
+        
       </div>
     </>
   );
